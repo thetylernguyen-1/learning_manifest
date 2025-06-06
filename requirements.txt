@@ -2,3 +2,4 @@ streamlit>=1.32.0
 plotly>=5.17.0
 pandas>=2.2.2
 matplotlib>=3.10.1
+matplotlib-venn
