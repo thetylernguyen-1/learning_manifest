@@ -7,7 +7,7 @@ from visualization.whole_brain_analysis import create_quadrant_pie_chart
 from visualization.funnel_improvement import create_leadership_funnel_chart
 from visualization.saboteur import create_saboteur_bar_chart
 from visualization.radar import create_radar_chart
-
+from visualization.venn_diagram import create_who_how_venn
 st.set_page_config(layout="wide")
 
 
@@ -197,7 +197,29 @@ if page == "Systematic and Long-term Action":
         st.plotly_chart(fig, use_container_width=True)
 
 if page == "Bridging the Gaps":
-    st.title()
+    st.title("Turning Tensions into Synergy")
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.subheader("Optimal time of the day for learning:")
+        data = {
+            "Work": ["Analytic tasks", "Insight tasks", "Making an impression","Making a decision"],
+            "Third Bird":["Early to midmorning", "Late afternoon/early evening","Morning", "Early to midmorning"],
+        }
+        df = pd.DataFrame(data)
+        st.dataframe(df.style.set_properties(**{
+    'background-color': "#CAE6F1",
+    'color': 'black',
+    'border-color': 'gray',
+    'text-align': 'center'
+}))
+    with col2: 
+        st.subheader("Turning Tensions into Synergy:")
+        fig_venn = create_who_how_venn()
+        st.plotly_chart(fig_venn, use_container_width= True)
+
+
+
 
 
         
