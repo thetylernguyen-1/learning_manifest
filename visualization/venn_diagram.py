@@ -1,31 +1,17 @@
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn2
 
 def create_who_how_venn():
-    labels = {
-        "A": "WHO",
-        "B": "HOW",
-        "A & B": "Bridging the Gaps"
-    }
-
-    values = [4, 4, 2]
-
-    region_text = [
-        "Intentional\nC-quadrant\npractice",
-        "- active listening\n- reflective journaling\n- feedback\n- peer coaching",
-        "Bridging\nthe gaps"
-    ]
-
-    fig = go.Figure(data=go.Venn(
-        labels=labels,
-        values=values,
-        text=region_text,
-        textposition="middle center"
-    ))
-
-    fig.update_layout(
-        title_text="Venn Diagram: Bridging WHO and HOW in Learning",
-        height=600,
-        width=800
+    fig, ax = plt.subplots()
+    venn = venn2(
+        subsets=(4, 4, 2),
+        set_labels=("WHO", "HOW")
     )
-
+    
+    ax.set_title("Venn Diagram: Bridging WHO and HOW in Learning", fontsize=14)
+    
+    venn.get_label_by_id('10').set_text("Intentional\nC-quadrant\npractice")
+    venn.get_label_by_id('01').set_text("- active listening\n- reflective journaling\n- feedback\n- peer coaching")
+    venn.get_label_by_id('11').set_text("Bridging\nthe gaps")
+    
     return fig

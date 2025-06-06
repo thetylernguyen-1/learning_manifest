@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import sys, os
+import matplotlib.pyplot as plt
 #import all the figures
 from visualization.learning_pyramid import create_capability_pyramid
 from visualization.whole_brain_analysis import create_quadrant_pie_chart
@@ -121,17 +122,28 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+st.markdown(
+    """
+    <h1 style='text-align: center; color: #2C3E50;'>🌱 Welcome to My Learning Manifest</h1>
+    <p style='text-align: center; font-size: 18px; color: #4A4A4A;'>
+        A personal journey of growth, reflection, and intentional development.
+    </p>
+    """, 
+    unsafe_allow_html=True
+)
 # Sidebar 
 st.sidebar.markdown(
     "<div class='sidebar-title'>💡 Learning Manifest</div>",
     unsafe_allow_html=True
 )
+st.sidebar.info("Use the dropdown below to explore different aspects of my learning journey 👇")
 
 st.sidebar.markdown("---")
+st.sidebar.caption("🚀 Scroll through to explore more insights.")
 
 
 page = st.sidebar.selectbox(
-    " Choose a page:",
+    " 🔎 Choose a page:",
     ["Expertise Pyramid", "Embracing the Fear", "Systematic and Long-term Action", "Bridging the Gaps"]
 )
 
@@ -216,7 +228,8 @@ if page == "Bridging the Gaps":
     with col2: 
         st.subheader("Turning Tensions into Synergy:")
         fig_venn = create_who_how_venn()
-        st.plotly_chart(fig_venn, use_container_width= True)
+        st.pyplot(fig_venn)
+
 
 
 
