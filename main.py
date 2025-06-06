@@ -214,6 +214,8 @@ if page == "Bridging the Gaps":
 
     with col1:
         st.subheader("Optimal time of the day for learning:")
+        with st.expander("❓ Source"):
+         st.write("Based on Daniel Pink’s chronotype test in *When: The Scientific Secrets of Perfect Timing*.")
         data = {
             "Work": ["Analytic tasks", "Insight tasks", "Making an impression","Making a decision"],
             "Third Bird":["Early to midmorning", "Late afternoon/early evening","Morning", "Early to midmorning"],
